@@ -1,0 +1,6 @@
+{
+  "name": "MODcord - مودكورد",
+  "description": "MODcord - مودكورد: تطبيق محادثات صوتية ونصية متقدم ومستوحى من ديسكورد مع دعم كامل لمشاركة الشاشة والمجتمعات",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

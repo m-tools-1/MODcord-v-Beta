@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "Account": {
+      "title": "Account",
+      "description": "User account credentials and profile settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "password": { "type": "string" },
+        "name": { "type": "string" },
+        "displayName": { "type": "string" },
+        "discriminator": { "type": "string" },
+        "avatar": { "type": "string" },
+        "role": { "type": "string" },
+        "roleTitle": { "type": "string" },
+        "roleColor": { "type": "string" },
+        "bio": { "type": "string" },
+        "color": { "type": "string" },
+        "joinedAt": { "type": "string" }
+      },
+      "required": ["id", "username", "password", "displayName"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Public user profile and presence information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "displayName": { "type": "string" },
+        "discriminator": { "type": "string" },
+        "avatar": { "type": "string" },
+        "status": { "type": "string" },
+        "customStatus": { "type": "string" },
+        "role": { "type": "string" },
+        "roleTitle": { "type": "string" },
+        "roleColor": { "type": "string" },
+        "bio": { "type": "string" },
+        "color": { "type": "string" },
+        "joinedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "displayName"]
+    },
+    "Server": {
+      "title": "Server",
+      "description": "ModeCord server channels and metadata",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "icon": { "type": "string" },
+        "description": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "categories": { "type": "array" },
+        "channels": { "type": "array" },
+        "memberIds": { "type": "array" }
+      },
+      "required": ["id", "name", "ownerId"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Chat message in a channel",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "channelId": { "type": "string" },
+        "serverId": { "type": "string" },
+        "authorId": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "isPinned": { "type": "boolean" },
+        "reactions": { "type": "array" }
+      },
+      "required": ["id", "channelId", "authorId", "content"]
+    }
+  },
+  "firestore": {
+    "/accounts/{accountId}": {
+      "schema": "Account",
+      "description": "Stored user credentials and accounts"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Public user profiles"
+    },
+    "/servers/{serverId}": {
+      "schema": "Server",
+      "description": "Servers and channels"
+    },
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Channel messages"
+    }
+  }
+}
